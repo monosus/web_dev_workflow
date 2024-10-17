@@ -48,7 +48,6 @@ jobs:
           script: |
             const branch_name = process.env.BRANCH_NAME;
             const pr_title = "${{ github.event.issue.title }}";
-            # const pr_body = `This is a draft PR for branch \`${branch_name}\` related to the issue #${{ github.event.issue.number }}.`;
             const pr_body = `
             ## 概要
             issue ${{ github.event.issue.number }}
