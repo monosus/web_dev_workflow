@@ -26,7 +26,7 @@ jobs:
       - name: Create new branch
         run: |
           git config user.name "GitHub Actions Bot"
-          
+          git config user.email "username@users.noreply.github.com"
           # PREFIXが空でない場合にアンダースコアを追加
           BRANCH_NAME_SUFFIX="${PREFIX:+_}${PREFIX}issue-${{ github.event.issue.number }}"
           git checkout -b $BRANCH_NAME_SUFFIX
