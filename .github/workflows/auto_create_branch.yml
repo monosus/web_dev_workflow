@@ -49,8 +49,9 @@ jobs:
             const branch_name = process.env.BRANCH_NAME;
             const pr_title = "${{ github.event.issue.title }}";
             const pr_body = `
+            This is a draft PR for branch \`${branch_name}\` related to the issue #${{ github.event.issue.number }}.
             ## 概要
-            issue ${{ github.event.issue.number }}
+            
             <!-- ここにプルリクエストの概要を記載してください。 -->
 
             ## 対応内容（簡潔に）
@@ -60,17 +61,17 @@ jobs:
 
             ## 確認
 
-            - [] 実機での動作確認
-            - [] キーボード操作
-            - [] スクリーンリーダー
-            - [] axeなどのアクセシビリティチェックツールでの確認
+            - [ ] 実機での動作確認
+            - [ ] キーボード操作
+            - [ ] スクリーンリーダー
+            - [ ] axeなどのアクセシビリティチェックツールでの確認
 
 
             ## その他
 
             <!-- その他、レビュアーに伝えたいことがあれば記載してください。 -->
 
-            This is a draft PR for branch \`${branch_name}\` related to the issue #${{ github.event.issue.number }}.
+            
             `;
             const prResponse = await github.rest.pulls.create({
               owner: context.repo.owner,
@@ -94,9 +95,14 @@ jobs:
             const pr_number = ${{ steps.create_pr.outputs.pr_number }};
             const message = `
             新しいブランチ \`${branch_name}\` が作成されました。
-            Checkout with GitHub CLI:
+            GitHub CLIでチェックアウトするコマンド:
             \`\`\`bash
             gh pr checkout ${pr_number}
+            \`\`\`
+            または、Gitコマンドを使用してチェックアウトするには:
+            \`\`\`bash
+            git fetch origin pull/${pr_number}/head:${branch_name}
+            git checkout ${branch_name}
             \`\`\`
             `;
             github.rest.issues.createComment({
