@@ -1,0 +1,40 @@
+name: "新機能リクエスト"
+description: "新しい機能や改善点を提案するためのテンプレート"
+title: "[機能リクエスト] "
+labels: ["enhancement"]
+body:
+  - type: checkboxes
+    id: summary
+    attributes:
+      label: "制作概要"
+      options:
+        - label: "ページの作成"
+        - label: "コンポーネントの作成"
+        - label: "ロジックの作成"
+        - label: "修正"
+        - label: "環境の整備"
+
+  - type: textarea
+    id: details
+    attributes:
+      label: "詳細説明"
+      description: "ここに詳細な説明を記入してください"
+
+  - type: input
+    id: design_link
+    attributes:
+      label: "Figmaなどのデザインツールのリンク"
+      description: "リンクをここに貼り付けてください"
+      placeholder: "https://figma.com/..."
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "キャプチャ画像"
+      description: "画像をここにアップロードしてください"
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: "その他"
+      description: "静的ウェブサイトのウェブ制作会社が使用するための追加情報や注意点を記入してください"
