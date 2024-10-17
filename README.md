@@ -15,6 +15,8 @@ bun create monosus/web_dev_workflow .
 
 GitHubのリポジトリ画面での操作です。
 
+issueに誰かをアサイン（以下の順序2の段階）のリモートのmainブランチからissueブランチを作成します。
+
 1. 人がやる:issueを作成
 2. 人がやる:issueに誰かをアサイン
 3. botがやる:issueナンバーでブランチを作成（issue-12）
