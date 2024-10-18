@@ -23,4 +23,10 @@ issueに誰かをアサイン（以下の順序2の段階）のリモートのma
 4. botがやる:issueに対応するPRをドラフト状態で作成する（PRテンプレートも挿入される）
 5. botがやる:issueにブランチへのチェックアウトコマンドをコメントする
 　
+## 2. 非推奨：コミットメッセージをaiで生成
 
+[openCommit](https://github.com/di-sukharev/opencommit)をGitHub Actionsに導入しましたが、
+
+workflow毎にリモートとローカル間でcommit messageに関しての差分が出るため作業フローがそこまで簡素化できませんでした。
+ただいopenCommitを有用なプラグインですので導入をオススメします。似たようなもので[aicommits](https://github.com/Nutlope/aicommits)もあります。
+openCommitのほうがemojiを簡単に使えたりして楽しいと思います。（openAiのapi_keyは各々で用意する必要があります。）
