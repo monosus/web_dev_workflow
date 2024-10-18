@@ -1,50 +1,50 @@
-# commit test for opencommit action
-name: "OpenCommit Action"
+# # commit test for opencommit action
+# name: "OpenCommit Action"
 
-on:
-  push:
-    branches-ignore: [main master dev development release]
+# on:
+#   push:
+#     branches-ignore: [main master dev development release]
 
-jobs:
-  opencommit:
-    timeout-minutes: 10
-    name: OpenCommit
-    runs-on: ubuntu-latest
-    permissions: write-all
-    steps:
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Filter Commit Messages
-        run: |
-          git log -1 --pretty=%B | awk 'length($0) >= 8' > filtered_commit_message.txt
+# jobs:
+#   opencommit:
+#     timeout-minutes: 10
+#     name: OpenCommit
+#     runs-on: ubuntu-latest
+#     permissions: write-all
+#     steps:
+#       - name: Setup Node.js Environment
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: "20"
+#       - uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+#       - name: Filter Commit Messages
+#         run: |
+#           git log -1 --pretty=%B | awk 'length($0) >= 8' > filtered_commit_message.txt
 
-      - name: Use Filtered Commit Message
-        if: success()
-        run: |
-          COMMIT_MESSAGE=$(cat filtered_commit_message.txt)
-          echo "Using commit message: $COMMIT_MESSAGE"
-          # ここでフィルタリングされたコミットメッセージを使用するロジックを追加
+#       - name: Use Filtered Commit Message
+#         if: success()
+#         run: |
+#           COMMIT_MESSAGE=$(cat filtered_commit_message.txt)
+#           echo "Using commit message: $COMMIT_MESSAGE"
+#           # ここでフィルタリングされたコミットメッセージを使用するロジックを追加
 
-      - uses: di-sukharev/opencommit@github-action-v1.0.4
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          # set openAI api key in repo actions secrets,
-          # for openAI keys go to: https://platform.openai.com/account/api-keys
-          # for repo secret go to: <your_repo_url>/settings/secrets/actions
-          OCO_OPENAI_API_KEY: ${{ secrets.OCO_API_KEY }}
+#       - uses: di-sukharev/opencommit@github-action-v1.0.4
+#         with:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         env:
+#           # set openAI api key in repo actions secrets,
+#           # for openAI keys go to: https://platform.openai.com/account/api-keys
+#           # for repo secret go to: <your_repo_url>/settings/secrets/actions
+#           OCO_OPENAI_API_KEY: ${{ secrets.OCO_API_KEY }}
 
-          # customization
-          OCO_TOKENS_MAX_INPUT: 4096
-          OCO_TOKENS_MAX_OUTPUT: 500
-          OCO_OPENAI_BASE_PATH: ""
-          OCO_DESCRIPTION: false
-          OCO_EMOJI: true
-          OCO_MODEL: gpt-4o
-          OCO_LANGUAGE: ja
-          OCO_PROMPT_MODULE: conventional-commit
+#           # customization
+#           OCO_TOKENS_MAX_INPUT: 4096
+#           OCO_TOKENS_MAX_OUTPUT: 500
+#           OCO_OPENAI_BASE_PATH: ""
+#           OCO_DESCRIPTION: false
+#           OCO_EMOJI: true
+#           OCO_MODEL: gpt-4o
+#           OCO_LANGUAGE: ja
+#           OCO_PROMPT_MODULE: conventional-commit
