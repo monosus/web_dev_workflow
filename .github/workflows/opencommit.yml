@@ -1,4 +1,4 @@
-# commit test for opencommit action
+# commit test for opencommit action with github actions
 name: "OpenCommit Action"
 
 on:
