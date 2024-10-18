@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js Environment
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: "20"
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -35,7 +35,7 @@ jobs:
           OCO_TOKENS_MAX_OUTPUT: 500
           OCO_OPENAI_BASE_PATH: ""
           OCO_DESCRIPTION: false
-          OCO_EMOJI: false
+          OCO_EMOJI: true
           OCO_MODEL: gpt-4o
-          OCO_LANGUAGE: en
+          OCO_LANGUAGE: ja
           OCO_PROMPT_MODULE: conventional-commit
