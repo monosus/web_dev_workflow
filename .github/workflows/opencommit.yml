@@ -1,4 +1,4 @@
-# # commit test for opencommit action
+# # Github actionsでcommit messageを修正するとリモートとローカルで差分が生まれ、毎回rebaseかmergeが必要になるので、このactionsは使わないことをおすすめします。
 # name: "OpenCommit Action"
 
 # on:
