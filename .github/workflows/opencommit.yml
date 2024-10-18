@@ -1,4 +1,4 @@
-# commit test for opencommit action
+# commit test for opencommit action 
 name: "OpenCommit Action"
 
 on:
